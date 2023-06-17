@@ -28,12 +28,14 @@ const videos = [
 
 app.use("/public", express.static("public"))
 
+app.use("/videos", express.static("videos"))
+
 app.get("/", function (req, res) {
     res.sendFile(__dirname + "/index.html")
 })
 
 app.get("/video", function (req, res) {
-    const filme = req.query.filme || 1;    
+    const filme = parseInt(req.query.filme) || 1;    
     // Ensure there is a range given for the video
     const range = req.headers.range
     if (!range) {

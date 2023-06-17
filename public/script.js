@@ -13,7 +13,7 @@ const videos = [
     },
     {
       id: 3,
-      name: "For Bigger Blazes",
+      name: "tears of Steel",
       cover: "/public/tears-of-steel-cover.jpg",
       poster: "/public/posters/tears-of-steel.jpg"
     }
