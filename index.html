@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0" />
+  <title>OlindaWeb Stream Experiment</title>
+  <link rel="stylesheet"
+    href="/public/style.css" />
+</head>
+
+<body>
+  <h2>HTTP Video Streaming</h2>
+  <p>Pick a movie and watch it. The video will be streamed on demand from the server.</p>
+  <div id="film-posters">
+    <p data-film="1">
+      <strong class="film-name">Big Buck Bunny</strong>
+      <img src="/public/posters/bigbuck.jpg"
+        alt="Big Buck Bunny"
+        class="film-poster" />
+    </p>
+    <p data-film="2">
+      <strong class="film-name">Elephants Dream</strong>
+      <img src="/public/posters/elephants-dream.png"
+        alt="Elephants Dream"
+        class="film-poster" />
+    </p>
+    <p data-film="3">
+      <strong class="film-name">Tears of Steel</strong>
+      <img src="/public/posters/tears-of-steel.jpg"
+        alt="Tears of Steel"
+        class="film-poster" />
+    </p>
+  </div>
+  <p> You are watching the movie: <strong id="film-name">Big Buck Bunny</strong>
+  </p>
+  <form method="get"
+    name="filme-choice">
+    <select name="filme"
+      id="filme-select">
+      <option value="1">Big Buck Bunny</option>
+      <option value="2">Elephants Dream</option>
+      <option value="3">Tears of Steel</option>
+    </select>
+    <input type="submit"
+      value="Submit" />
+  </form>
+  <video id="videoPlayer"
+    width="650"
+    controls
+    muted="muted"
+    poster="/public/bigbuck-cover.jpg"
+    autoplay>
+    <source src="/video?filme=1"
+      type="video/mp4" />
+  </video>
+  <p>Experimental HTTP Video Streaming to compare HTTP2 over TCP and QUIC/HTTP3 over UDP.</p>
+  <p>All movies are licensed under the Creative Commons Attribution 3.0 license by the Blender Foundation.</p>
+  <script src="/public/script.js"></script>
+</body>
+
+</html>

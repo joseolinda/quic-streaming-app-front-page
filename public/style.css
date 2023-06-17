@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 40px auto;
+  max-width: 650px;
+  line-height: 1.6;
+  font-size: 18px;
+  font-family: sans-serif;
+  color: #444;
+  padding: 0 10px;
+}
+
+h2 {
+  line-height: 1.2;
+}
+
+form {
+  display: none;
+}
+
+#film-posters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#film-posters p {
+  margin: 5px;
+  background: #000;
+  text-align: center;
+    padding: 10px;
+}
+
+#film-posters p:hover {
+  cursor: pointer;
+  background: #444;
+  transition: all 0.3s ease-in-out;
+}
+
+.film-poster {
+  width: 150px;
+  height: auto;
+  margin-top: 20px;
+}
+
+.film-name {
+  text-align: center;
+  margin-top: 15px;
+  color: #fff;
+}
+
+/* Selecionar p cuja imagem interna tenha a classe selected */
+#film-posters p.selected {
+  background: #53615a;
+  border: 2px solid #fff;
+}

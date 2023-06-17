@@ -1,0 +1,15 @@
+{
+  "name": "streaming-app",
+  "version": "1.0.0",
+  "description": "QUIC Stream vs HTTP Stream",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon ./app.js",
+    "start": "node ./app.js"
+  },
+  "devDependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.6"
+  }
+}
