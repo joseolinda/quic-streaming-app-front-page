@@ -28,8 +28,6 @@ const videos = [
 
 app.use("/public", express.static("public"))
 
-app.use("/video", express.static("videos"))
-
 app.get("/", function (req, res) {
     res.sendFile(__dirname + "/index.html")
 })
