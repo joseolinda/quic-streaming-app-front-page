@@ -65,13 +65,10 @@ app.get("/video", function (req, res) {
     res.writeHead(206, headers)
 
     // create video read stream for this particular chunk
-    try {
-        const videoStream = fs.createReadStream(videoPath, { start, end })
-        // Stream the video chunk to the client
-        videoStream.pipe(res)
-    } catch (error) {
-        res.json({ error: error.message })
-    }    
+    const videoStream = fs.createReadStream(videoPath, { start, end })
+    videoStream.on("error", err => err && res.status(500).end());
+    // Stream the video chunk to the client
+    videoStream.pipe(res)
 })
 
 app.listen(port, function () {
