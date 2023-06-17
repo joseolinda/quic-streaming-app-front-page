@@ -3,7 +3,7 @@ const app = express()
 const fs = require("fs")
 
 const port = process.env.PORT || 3002
-const videoendpoint = process.env.VIDEO_URL || "/video?filme=1"
+const videoendpoint = process.env.VIDEO_URL || "/video"
 
 const videos = [
     { 
@@ -33,7 +33,7 @@ app.get("/", function (req, res) {
 })
 
 app.get("/video", function (req, res) {
-    const filme = req.query.filme;
+    const filme = req.query.filme || 1;
     console.log("filme: " + filme);
     console.log("videoendpoint: " + videoendpoint);
     console.log("videos: " + videos[filme-1].file);
