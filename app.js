@@ -10,19 +10,19 @@ const videos = [
         id: 1,
         name: "Big Buck Bunny",
         cover: "/public/bigbuck-cover.jpg",
-        file: "./videos/bigbuck.mp4"
+        file: "/videos/bigbuck.mp4"
     },
     {
         id: 2,
         name: "Elephants Dream",
         cover: "/public/elephants-cover.jpg",
-        file: "./videos/elephants-dream.mp4"
+        file: "/videos/elephants-dream.mp4"
     },
     {
         id: 3,
         name: "Tears of Steel",
         cover: "/public/tears-of-steel-cover.jpg",
-        file: "./videos/tears-of-steel.mp4"
+        file: "/videos/tears-of-steel.mp4"
     }
 ]
 
@@ -44,11 +44,10 @@ app.get("/video", function (req, res) {
     }
 
     // get video stats (about 61MB)
-    const videoPath = videos[filme - 1].file
-
-
-    // const videoSize = fs.statSync(videoPath).size
+    const videoPath = __dirname + videos[filme - 1].file
     let videoSize = 0
+
+
     try {
         videoSize = fs.statSync(videoPath).size
         console.log('it exists')
@@ -78,7 +77,7 @@ app.get("/video", function (req, res) {
 
     // create video read stream for this particular chunk
     const videoStream = fs.createReadStream(videoPath, { start, end })
-    videoStream.on("error", err => err && res.status(500).end())
+    
     // Stream the video chunk to the client
     videoStream.pipe(res)
 })
