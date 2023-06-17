@@ -33,11 +33,7 @@ app.get("/", function (req, res) {
 })
 
 app.get("/video", function (req, res) {
-    const filme = req.query.filme || 1;
-    console.log("filme: " + filme);
-    console.log("videoendpoint: " + videoendpoint);
-    console.log("videos: " + videos[filme-1].file);
-    
+    const filme = req.query.filme || 1;    
     // Ensure there is a range given for the video
     const range = req.headers.range
     if (!range) {
@@ -62,16 +58,20 @@ app.get("/video", function (req, res) {
         "Accept-Ranges": "bytes",
         "Content-Length": contentLength,
         "Content-Type": "video/mp4",
+        "x-file-name": videos[filme-1].name,
     }
 
     // HTTP Status 206 for Partial Content
     res.writeHead(206, headers)
 
     // create video read stream for this particular chunk
-    const videoStream = fs.createReadStream(videoPath, { start, end })
-
-    // Stream the video chunk to the client
-    videoStream.pipe(res)
+    try {
+        const videoStream = fs.createReadStream(videoPath, { start, end })
+        // Stream the video chunk to the client
+        videoStream.pipe(res)
+    } catch (error) {
+        res.json({ error: error.message })
+    }    
 })
 
 app.listen(port, function () {
