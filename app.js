@@ -38,6 +38,7 @@ app.get("/video", function (req, res) {
     const filme = parseInt(req.query.filme) || 1;    
     // Ensure there is a range given for the video
     const range = req.headers.range
+    return res.json({ range });
     if (!range) {
         res.status(400).send("Requires Range header")
         return
