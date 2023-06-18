@@ -52,3 +52,24 @@ const videos = [
       filmChoice.dispatchEvent(new Event("submit"))
     })
   }
+
+// Mostrar estatísticas do vídeo
+const videoName = document.querySelector("#video-name");
+const resolution = document.querySelector("#resolution");
+const bitrate = document.querySelector("#bitrate");
+const fileSize = document.querySelector("#file-size");
+const duration = document.querySelector("#duration");
+const protocol = document.querySelector("#protocol");
+const latency = document.querySelector("#latency");
+const packetsInput = document.querySelector("#p-input");
+const packetsOutput = document.querySelector("#p-output");
+const bytesInputSize = document.querySelector("#b-input-size");
+const playTime = document.querySelector("#play-time");
+const firstByte = document.querySelector("#first-byte");
+const lastByte = document.querySelector("#last-byte");
+const downloadTime = document.querySelector("#download-time");
+const bufferingPercent = document.querySelector("#buffering-percent");
+const bufferingTime = document.querySelector("#buffering-time");
+const pauses = document.querySelector("#pauses");
+const videoPlayTime = document.querySelector("#play-time");
+const videoPlayTimePercent = document.querySelector("#play-time-percent");

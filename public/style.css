@@ -54,3 +54,53 @@ form {
   background: #53615a;
   border: 2px solid #fff;
 }
+
+
+#show-video {
+  display: flex;
+  background: #000;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+#show-video video {
+  border-radius: 6px 0 0 6px;
+}
+
+#videoPlayer {
+  width: 60%;
+}
+.caracteristicas, .estatisticas {
+  padding: 10px;
+  color: #fff;
+}
+.estatisticas {
+  flex-basis: 100%;
+}
+
+.caracteristicas p,
+.estatisticas p {
+  font-size: 12px;
+  margin: 0;
+  padding: 10px;
+  display: inline-block;
+  min-width: 48%;
+}
+.caracteristicas p span,
+.estatisticas p span {
+  display: block;
+}
+.caracteristicas p span:first-child,
+.estatisticas p span:first-child {
+  color: #eaeaea;
+}
+.caracteristicas p span:last-child,
+.estatisticas p span:last-child {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.estatisticas {
+  background: #323b37;
+  border-radius: 0 6px 6px 0;
+}
