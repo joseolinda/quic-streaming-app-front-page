@@ -121,3 +121,35 @@ form {
   background: #3a3a3a;
   border-radius: 0 6px 6px 0;
 }
+
+@media screen and (max-width: 964px) {
+  #film-posters {
+    flex-direction: column;
+  }
+
+  #film-posters p {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #show-video {
+    flex-direction: column;
+  }
+
+  #videoPlayer {
+    width: 100%;
+  }
+
+  .caracteristicas,
+  .estatisticas {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .caracteristicas p,
+  .estatisticas p {
+    width: 33.3%;
+    min-width: auto;
+  }
+}
