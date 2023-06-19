@@ -124,7 +124,7 @@ function updateStats(videoInfo) {
 
     // Calcular latência
     const latencyTime = parseInt(firstByte.textContent.match(/:(\d{3}$)/)[1]) - parseInt(playTime.textContent.match(/:(\d{3}$)/)[1])
-    latency.textContent = `${latencyTime}ms`
+    latency.textContent = `${Math.abs(latencyTime)}ms`
     // Mudar cor dos millisegundos
     playTime.innerHTML = playTime.innerHTML.replace(/:(\d{3})$/, "<i class='ms'>$&</i>")
     firstByte.innerHTML = firstByte.innerHTML.replace(/:(\d{3}$)/, "<i class='ms'>$&</i>")
