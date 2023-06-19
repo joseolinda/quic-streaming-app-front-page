@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   line-height: 1.6;
   font-size: 18px;
@@ -25,10 +26,14 @@ form {
 }
 
 #film-posters p {
-  margin: 5px;
   background: #000;
   text-align: center;
-    padding: 10px;
+  width: 33%;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
 }
 
 #film-posters p:hover {
@@ -40,7 +45,6 @@ form {
 .film-poster {
   width: 150px;
   height: auto;
-  margin-top: 20px;
 }
 
 .film-name {
@@ -71,14 +75,18 @@ form {
 #videoPlayer {
   width: 60%;
 }
+
 .caracteristicas {
   width: 15%;
 }
-.caracteristicas, .estatisticas {
+
+.caracteristicas,
+.estatisticas {
   padding: 10px;
   color: #fff;
   width: 20%;
 }
+
 .caracteristicas p,
 .estatisticas p {
   font-size: 12px;
@@ -87,17 +95,21 @@ form {
   display: inline-block;
   min-width: 48%;
 }
+
 .caracteristicas p {
   width: 100%;
 }
+
 .caracteristicas p span,
 .estatisticas p span {
   display: block;
 }
+
 .caracteristicas p span:first-child,
 .estatisticas p span:first-child {
   color: #888888;
 }
+
 .caracteristicas p span:last-child,
 .estatisticas p span:last-child {
   font-weight: bold;
