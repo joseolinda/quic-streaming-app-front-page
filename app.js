@@ -7,8 +7,10 @@ const port = process.env.PORT || 3002
 const videoendpoint = process.env.VIDEO_URL || "/video?filme=1"
 
 const videos = require("./public/js/listVideos.json")
+const { Console } = require("console")
 
 app.use("/public", express.static("public"))
+app.use(express.json());
 
 app.get("/", function (req, res) {
     res.sendFile(__dirname + "/index.html")
@@ -56,9 +58,10 @@ app.get("/video", function (req, res) {
 
 // Persistir os logs no banco de dados
 
-app.get("/register-log", function (req, res) {
-    const logs = req.query.logs
+app.post("/register-log", function (req, res) {
+    const logs = req.body
     insertLogs(logs)
+    res.status(200).send("Log registrado com sucesso!")
 })
 
 

@@ -240,5 +240,4 @@ const verPeformance = () => {
   .catch(error => {
     console.error("Erro ao registrar logs:", error)
   })
-
 }
