@@ -1,23 +1,4 @@
-const videos = [
-  {
-    id: 1,
-    name: "Big Buck Bunny",
-    cover: "/public/bigbuck-cover.jpg",
-    poster: "/public/posters/bigbuck.jpg"
-  },
-  {
-    id: 2,
-    name: "Elephants Dream",
-    cover: "/public/elephants-dream-cover.jpg",
-    poster: "/public/posters/elephants-dream.png"
-  },
-  {
-    id: 3,
-    name: "Tears of Steel",
-    cover: "/public/tears-of-steel-cover.jpg",
-    poster: "/public/posters/tears-of-steel.jpg"
-  }
-]
+import videos from './listVideos.json' assert { type: "json" };
 
 const showVideo = document.getElementById("show-video")
 const videoPlayer = document.getElementById("videoPlayer")

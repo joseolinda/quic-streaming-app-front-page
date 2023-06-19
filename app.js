@@ -6,26 +6,7 @@ const { insertLogs } = require("./database/db")
 const port = process.env.PORT || 3002
 const videoendpoint = process.env.VIDEO_URL || "/video?filme=1"
 
-const videos = [
-    { 
-        id: 1, 
-        name: "Big Buck Bunny", 
-        cover: "/public/bigbuck-cover.jpg", 
-        file: "/videos/bigbuck.mp4"
-    },
-    {
-        id: 2,
-        name: "Elephants Dream",
-        cover: "/public/elephants-cover.jpg",
-        file: "/videos/elephants-dream.mp4"
-    },
-    {
-        id: 3,
-        name: "Tears of Steel",
-        cover: "/public/tears-of-steel-cover.jpg",
-        file: "/videos/tears-of-steel.mp4"
-    }
-];
+const videos = require("./public/js/listVideos.json")
 
 app.use("/public", express.static("public"))
 

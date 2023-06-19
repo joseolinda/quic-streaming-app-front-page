@@ -32,6 +32,12 @@
 					alt="Tears of Steel"
 					class="film-poster" />
 			</p>
+      <p data-film="4">
+				<strong class="film-name">Big Buck Mini</strong>
+				<img src="/public/posters/bigbuck.jpg"
+					alt="Big Buck Mini"
+					class="film-poster" />
+			</p>
 		</div>
 		<p> You are watching the movie: <strong id="film-name"><i>&lt;please, select one&gt;</i></strong>
 		</p>
@@ -42,6 +48,7 @@
 				<option value="1">Big Buck Bunny</option>
 				<option value="2">Elephants Dream</option>
 				<option value="3">Tears of Steel</option>
+				<option value="4">Big Buck Mini</option>
 			</select>
 			<input type="submit"
 				value="Submit" />
@@ -142,6 +149,6 @@
 		<p>Experimental HTTP Video Streaming to compare HTTP2 over TCP and QUIC/HTTP3 over UDP.</p>
 		<p>All movies are licensed under the Creative Commons Attribution 3.0 license by the Blender Foundation.</p>
 		<script src="/public/js/moment-with-locales.min.js"></script>
-		<script src="/public/js/script.js"></script>
+		<script type="module" src="/public/js/script.js"></script>
 	</body>
 </html>

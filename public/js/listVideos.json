@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Big Buck Bunny",
+    "cover": "/public/bigbuck-cover.jpg",
+    "file": "/videos/bigbuck.mp4"
+  },
+  {
+    "id": 2,
+    "name": "Elephants Dream",
+    "cover": "/public/elephants-dream-cover.jpg",
+    "file": "/videos/elephants-dream.mp4"
+  },
+  {
+    "id": 3,
+    "name": "Tears of Steel",
+    "cover": "/public/tears-of-steel-cover.jpg",
+    "file": "/videos/tears-of-steel.mp4"
+  },
+  {
+    "id": 4,
+    "name": "Big Buck Mini",
+    "cover": "/public/bigbuck-cover.jpg",
+    "file": "/videos/bigbuck-mini.mp4"
+  }
+]
