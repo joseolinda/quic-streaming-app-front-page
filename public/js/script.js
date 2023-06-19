@@ -207,7 +207,7 @@ function getFPS() {
     currentDecodedFPS = Math.round(decodedFPS.slice(-1)[0])
     currentDroppedFPS = Math.round(droppedFPS.slice(-1)[0])
 
-    fpsRate.textContent = `${decodedFPSavg.toFixed(1)} fps`
+    fpsRate.textContent = `${Math.abs(decodedFPSavg.toFixed(1))} fps`
 
 
   } else {
