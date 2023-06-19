@@ -33,7 +33,7 @@ app.get("/", function (req, res) {
 })
 
 app.get("/video", function (req, res) {
-    const filme = req.query.filme;
+    const filme = req.query.filme || 1;
     
     // Ensure there is a range given for the video
     let range = req.headers.range
