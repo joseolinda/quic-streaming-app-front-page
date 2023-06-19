@@ -61,6 +61,7 @@ form {
   background: #000;
   padding: 20px;
   border-radius: 6px;
+  position: relative;
 }
 
 #show-video video {
@@ -70,14 +71,14 @@ form {
 #videoPlayer {
   width: 60%;
 }
+.caracteristicas {
+  width: 15%;
+}
 .caracteristicas, .estatisticas {
   padding: 10px;
   color: #fff;
+  width: 20%;
 }
-.estatisticas {
-  flex-basis: 100%;
-}
-
 .caracteristicas p,
 .estatisticas p {
   font-size: 12px;
@@ -86,13 +87,16 @@ form {
   display: inline-block;
   min-width: 48%;
 }
+.caracteristicas p {
+  width: 100%;
+}
 .caracteristicas p span,
 .estatisticas p span {
   display: block;
 }
 .caracteristicas p span:first-child,
 .estatisticas p span:first-child {
-  color: #eaeaea;
+  color: #888888;
 }
 .caracteristicas p span:last-child,
 .estatisticas p span:last-child {
@@ -101,6 +105,7 @@ form {
 }
 
 .estatisticas {
-  background: #323b37;
+  width: 35%;
+  background: #3a3a3a;
   border-radius: 0 6px 6px 0;
 }
