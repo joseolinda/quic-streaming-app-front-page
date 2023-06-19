@@ -128,7 +128,7 @@ i.ms {
   font-style: normal;
 }
 
-@media screen and (min-width: 964px) {
+@media screen and (max-width: 964px) {
   #film-posters p {
     width: 33%;
     display: flex;
