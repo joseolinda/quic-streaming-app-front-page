@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const fs = require("fs")
+const { insertLogs } = require("./database/db")
 
 const port = process.env.PORT || 3002
 const videoendpoint = process.env.VIDEO_URL || "/video?filme=1"
@@ -71,6 +72,14 @@ app.get("/video", function (req, res) {
     // Stream the video chunk to the client
     videoStream.pipe(res)
 })
+
+// Persistir os logs no banco de dados
+
+app.get("/register-log", function (req, res) {
+    const logs = req.query.logs
+    insertLogs(logs)
+})
+
 
 app.listen(port, function () {
     console.log(`Listening on port ${port}!`)

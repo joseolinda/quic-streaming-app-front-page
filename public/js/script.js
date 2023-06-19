@@ -218,10 +218,46 @@ function getFPS() {
 
 setInterval(getFPS, 1000)
 
+const logs = []
+
+const BROWSER = new Array(
+  ["Microsoft Edge", /edg/i],
+  ["Microsoft Internet Explorer", /trident/i],
+  ["Mozilla Firefox", /firefox|fxios/i],
+  ["Opera", /opr\//i],
+  ["UC Browser", /ucbrowser/i],
+  ["Samsung Browser", /samsungbrowser/i],
+  ["Google Chrome", /chrome|chromium|crios/i],
+  ["Apple Safari", /safari/i],
+  ["Unknown", /.+/i],
+).find(([, value]) => value.test(window.navigator.userAgent)).shift()
+
 const verPeformance = () => {
   // Medindo a performance dos recursos carregados
   const resourceEntries = performance.getEntriesByType('resource')
-  resourceEntries.forEach(entry => {
-    console.table(entry)
+  // console.log(resourceEntries)
+  let videoCalls = resourceEntries.filter(r => r.initiatorType == 'video')
+
+  for (let vc of videoCalls) {
+    logs.push({
+      ...vc.toJSON()
+    })
+  }
+
+  // Enviar os logs para a rota "/register-log" do servidor
+  fetch("/register-log", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(logs),
   })
+  .then(response => response.json())
+  .then(data => {
+    console.log("Logs registrados com sucesso:", data)
+  })
+  .catch(error => {
+    console.error("Erro ao registrar logs:", error)
+  })
+
 }
