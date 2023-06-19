@@ -161,6 +161,7 @@ function updateStats(videoInfo) {
       lastByte.textContent = finishDownloadTime
       // Mudar cor dos millisegundos
       lastByte.innerHTML = lastByte.innerHTML.replace(/:(\d{3})$/, "<i class='ms'>$&</i>")
+      verPeformance()
     }
   })
 
@@ -201,7 +202,7 @@ function getFPS() {
     droppedFPS.push(fps)
 
     //calculate averages
-    const average = arr => arr.reduce( ( p, c ) => p + c, 0 ) / arr.length;
+    const average = arr => arr.reduce((p, c) => p + c, 0) / arr.length
     decodedFPSavg = average([...decodedFPS])
     droppedFPSavg = average([...droppedFPS])
     currentDecodedFPS = Math.round(decodedFPS.slice(-1)[0])
@@ -216,3 +217,11 @@ function getFPS() {
 }
 
 setInterval(getFPS, 1000)
+
+const verPeformance = () => {
+  // Medindo a performance dos recursos carregados
+  const resourceEntries = performance.getEntriesByType('resource')
+  resourceEntries.forEach(entry => {
+    console.table(entry)
+  })
+}

@@ -48,7 +48,7 @@ app.get("/video", function (req, res) {
 
     // Parse Range
     // Example: "bytes=32324-"
-    const CHUNK_SIZE = 10 ** 6 // 1MB
+    const CHUNK_SIZE = 10 ** 6
     const start = Number(range.replace(/\D/g, ""))
     const end = Math.min(start + CHUNK_SIZE, videoSize - 1)
 
