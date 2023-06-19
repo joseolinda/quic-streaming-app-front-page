@@ -37,7 +37,7 @@ filmPosters.forEach(poster => {
 function handleFilmChoiceSubmit(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
-  const film = formData.get("film-select");
+  const film = formData.get("film-select") || 1;
   const selectedVideo = videos[film - 1];
   filmName.textContent = selectedVideo.name;
   videoPlayer.src = `/video?filme=${film}`;
