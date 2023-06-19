@@ -35,7 +35,7 @@ filmPosters.forEach(poster => {
 function handleFilmChoiceSubmit(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
-  const film = formData.get("film-select") || 1;
+  const film = formData.get("film-select");
   const selectedVideo = videos[film - 1];
   filmName.textContent = selectedVideo.name;
   videoPlayer.src = `/video?filme=${film}`;
@@ -128,7 +128,8 @@ function updateStats(videoInfo) {
     }
     if (percent === 100) {
       finishDownloadTime = moment().format("HH:mm:ss");
-      bufferingTime.textContent = `${finishDownloadTime}s`;
+      bufferingTime.textContent = finishDownloadTime;
+      lastByte.textContent = finishDownloadTime;
     }
   });
 
@@ -139,7 +140,7 @@ function updateStats(videoInfo) {
       videoPlayTimeTotal.textContent = `${moment().format("HH:mm:ss")}s`;
     }
   });
-  
+
   videoPlayer.controls = false;
 }
 
