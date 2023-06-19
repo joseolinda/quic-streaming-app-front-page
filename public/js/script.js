@@ -56,12 +56,11 @@ function handleFilmSelectChange(event) {
   filmPostersImages.forEach(image => {
     image.parentElement.classList.remove("selected");
   });
-  console.log(filmSelect);
   filmPostersImages[selectedFilm - 1].parentElement.classList.add("selected");
 }
 
 function handlePosterClick(event) {
-  const selectedFilm = event.target.dataset.film;
+  const selectedFilm = event.target.parentElement.nodeName === "DIV" ? event.target.dataset.film : event.target.parentElement.dataset.film;
   filmSelect.value = selectedFilm;
   filmSelect.dispatchEvent(new Event("change"));
   filmChoice.dispatchEvent(new Event("submit"));
