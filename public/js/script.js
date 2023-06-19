@@ -19,6 +19,7 @@ const videos = [
   }
 ];
 
+const showVideo = document.getElementById("show-video");
 const videoPlayer = document.getElementById("videoPlayer");
 const filmChoice = document.forms["film-choice"];
 const filmName = document.getElementById("film-name");
@@ -44,8 +45,10 @@ function handleFilmChoiceSubmit(event) {
   videoPlayer.poster = selectedVideo.cover;
   videoPlayer.load();
   videoPlayer.play();
+  let time_play = moment().format("HH:mm:ss");
   pausesCount = 0;
-  updateStats({ time_play: moment().format("HH:mm:ss") });
+  showVideo.style.display = "flex";
+  updateStats({ time_play });
 }
 
 function handleFilmSelectChange(event) {
@@ -146,5 +149,3 @@ function updateStats(videoInfo) {
 
   videoPlayer.controls = false;
 }
-
-updateStats({ play_time: 0 });
