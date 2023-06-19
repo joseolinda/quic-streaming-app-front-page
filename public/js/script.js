@@ -85,6 +85,7 @@ const videoPlayTimePercent = document.querySelector("#play-time-percent");
 
 let pausesCount = 0;
 function updateStats(videoInfo) {
+  protocol.textContent = location.hostname === "olindaweb.app" ? "HTTP over TCP" : "QUIC/HTTP3 over UDP";
   videoName.textContent = filmName.textContent || "---";
   videoPlayer.addEventListener("loadedmetadata", function () {
     const videoWidth = videoPlayer.videoWidth;
