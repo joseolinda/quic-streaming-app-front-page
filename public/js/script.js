@@ -26,6 +26,8 @@ const filmSelect = document.getElementById("film-select");
 const filmPosters = document.querySelectorAll("#film-posters p");
 const filmPostersImages = document.querySelectorAll("#film-posters img");
 
+let pausesCount = 0;
+
 filmChoice.addEventListener("submit", handleFilmChoiceSubmit);
 filmSelect.addEventListener("change", handleFilmSelectChange);
 filmPosters.forEach(poster => {
@@ -42,6 +44,7 @@ function handleFilmChoiceSubmit(event) {
   videoPlayer.poster = selectedVideo.cover;
   videoPlayer.load();
   videoPlayer.play();
+  pausesCount = 0;
   updateStats({ time_play: moment().format("HH:mm:ss") });
 }
 
@@ -83,7 +86,6 @@ const pauses = document.querySelector("#pauses");
 const videoPlayTimeTotal = document.querySelector("#play-time-total");
 const videoPlayTimePercent = document.querySelector("#play-time-percent");
 
-let pausesCount = 0;
 function updateStats(videoInfo) {
   protocol.textContent = location.hostname === "olindaweb.app" ? "HTTP over TCP" : "QUIC/HTTP3 over UDP";
   videoName.textContent = filmName.textContent || "---";
