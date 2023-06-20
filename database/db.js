@@ -16,6 +16,7 @@ function createTable(db) {
   db.exec(`
     CREATE TABLE IF NOT EXISTS logs (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
+      playbackId VARCHAR(255),
       initiatorType VARCHAR(255),
       nextHopProtocol VARCHAR(255),
       workerStart DECIMAL(15, 10),
@@ -49,16 +50,17 @@ function insertLogs(logs) {
 
   const insertStatement = db.prepare(`
     INSERT INTO logs (
-      initiatorType, nextHopProtocol, workerStart, redirectStart,
+      playbackId, initiatorType, nextHopProtocol, workerStart, redirectStart,
       redirectEnd, fetchStart, domainLookupStart, domainLookupEnd, connectStart, connectEnd,
       secureConnectionStart, requestStart, responseStart, responseEnd, transferSize,
       encodedBodySize, decodedBodySize, serverTiming, renderBlockingStatus, responseStatus,
       name, entryType, startTime, duration
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
   `);
 
   logs.forEach((log) => {
     const values = [
+      log.playbackId,
       log.initiatorType,
       log.nextHopProtocol,
       log.workerStart,

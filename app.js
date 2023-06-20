@@ -61,7 +61,7 @@ app.get("/video", function (req, res) {
 app.post("/register-log", function (req, res) {
     const logs = req.body
     insertLogs(logs)
-    res.status(200).send("Log registrado com sucesso!")
+    res.status(200).send({ message: "Log registrado com sucesso!" })
 })
 
 

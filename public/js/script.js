@@ -218,9 +218,10 @@ const verPeformance = () => {
   const resourceEntries = performance.getEntriesByType('resource')
   // console.log(resourceEntries)
   let videoCalls = resourceEntries.filter(r => r.initiatorType == 'video')
-
+  const playbackId = Math.floor(Math.random() * 10000000000)
   for (let vc of videoCalls) {
     logs.push({
+      playbackId,
       ...vc.toJSON()
     })
   }
