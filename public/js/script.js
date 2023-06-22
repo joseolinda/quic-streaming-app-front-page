@@ -8,6 +8,8 @@ const filmSelect = document.getElementById("film-select")
 const filmPosters = document.querySelectorAll("#film-posters p")
 const filmPostersImages = document.querySelectorAll("#film-posters img")
 
+const videoFinished = document.querySelector(".video-finished")
+
 let pausesCount = 0
 let fpsInterval = false
 
@@ -67,6 +69,8 @@ function handleFilmChoiceSubmit(event) {
   videoPlayer.play()
   pausesCount = 0
   showVideo.style.display = "flex"
+  videoPlayer.style.display = "block"
+  videoFinished.style.display = "none"
   videoPlayer.muted = false
   videoPlayer.volume = 0.5
   updateStats({ time_play })
@@ -158,7 +162,7 @@ function updateStats(videoInfo) {
     if (timePercent === 100) {
       videoPlayTimeTotal.textContent = moment().format("HH:mm:ss:SSS")
       videoPlayTimeTotal.innerHTML = videoPlayTimeTotal.innerHTML.replace(/:(\d{3})$/, "<i class='ms'>$&</i>")
-      videoPlayer.parentElement.insertAdjacentHTML("afterbegin", `<div class="video-finished"><strong>Video Finalizado. Obrigado por participar!</strong></div>`)
+      videoFinished.style.display = "block"
       videoPlayer.style.display = "none"
     }
   })
