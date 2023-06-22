@@ -84,6 +84,10 @@ function handlePosterClick(event) {
   filmSelect.value = selectedFilm
   filmSelect.dispatchEvent(new Event("change"))
   filmChoice.dispatchEvent(new Event("submit"))
+  scroll({
+    top: showVideo.offsetTop - 10,
+    behavior: "smooth"
+  })
 }
 
 function updateStats(videoInfo) {
@@ -199,8 +203,6 @@ function getFPS() {
 
 setInterval(getFPS, 1000)
 
-const logs = []
-
 const BROWSER = new Array(
   ["Microsoft Edge", /edg/i],
   ["Microsoft Internet Explorer", /trident/i],
@@ -215,6 +217,7 @@ const BROWSER = new Array(
 
 const verPeformance = () => {
   // Medindo a performance dos recursos carregados
+  const logs = []
   const resourceEntries = performance.getEntriesByType('resource')
   // console.log(resourceEntries)
   let videoCalls = resourceEntries.filter(r => r.initiatorType == 'video')
