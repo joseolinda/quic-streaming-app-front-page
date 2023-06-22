@@ -9,6 +9,7 @@ const filmPosters = document.querySelectorAll("#film-posters p")
 const filmPostersImages = document.querySelectorAll("#film-posters img")
 
 let pausesCount = 0
+let fpsInterval = false
 
 // Mostrar estatísticas do vídeo
 const videoName = document.querySelector("#video-name")
@@ -67,7 +68,7 @@ function handleFilmChoiceSubmit(event) {
   pausesCount = 0
   showVideo.style.display = "flex"
   videoPlayer.muted = false
-  videoPlayer.volume = 0
+  videoPlayer.volume = 0.5
   updateStats({ time_play })
 }
 
@@ -146,6 +147,7 @@ function updateStats(videoInfo) {
       lastByte.textContent = finishDownloadTime
       // Mudar cor dos millisegundos
       lastByte.innerHTML = lastByte.innerHTML.replace(/:(\d{3})$/, "<i class='ms'>$&</i>")
+      bufferingTime.innerHTML = bufferingTime.innerHTML.replace(/:(\d{3})$/, "<i class='ms'>$&</i>")
       verPeformance()
     }
   })
@@ -156,6 +158,8 @@ function updateStats(videoInfo) {
     if (timePercent === 100) {
       videoPlayTimeTotal.textContent = moment().format("HH:mm:ss:SSS")
       videoPlayTimeTotal.innerHTML = videoPlayTimeTotal.innerHTML.replace(/:(\d{3})$/, "<i class='ms'>$&</i>")
+      videoPlayer.parentElement.insertAdjacentHTML("afterbegin", `<div class="video-finished"><strong>Video Finalizado. Obrigado por participar!</strong></div>`)
+      videoPlayer.style.display = "none"
     }
   })
 
@@ -167,6 +171,8 @@ function updateStats(videoInfo) {
     const newVolume = videoPlayer.volume + 0.1
     videoPlayer.volume = Math.min(newVolume, 1)
   })
+
+  fpsInterval = setInterval(getFPS, 1000)
 }
 
 // FPS Mestrics
@@ -200,8 +206,6 @@ function getFPS() {
     fpsRate.textContent = "Not supported"
   }
 }
-
-setInterval(getFPS, 1000)
 
 const BROWSER = new Array(
   ["Microsoft Edge", /edg/i],
@@ -244,4 +248,6 @@ const verPeformance = () => {
   .catch(error => {
     console.error("Erro ao registrar logs:", error)
   })
+
+  if (fpsInterval) clearInterval(fpsInterval)
 }
