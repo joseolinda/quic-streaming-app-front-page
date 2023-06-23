@@ -109,4 +109,4 @@ function insertLogs(logs) {
   })
 }
 
-module.exports = { insertLogs }
+module.exports = { insertLogs, createDbConnection }
