@@ -58,18 +58,18 @@ app.get("/video", function (req, res) {
 })
 
 // Persistir os logs no banco de dados
-app.post("/register-log", async function (req, res) {
+app.post("/register-log", async function (req, res, next) {
     const logs = req.body
     try {
         await insertLogs(logs).then(result => {
             console.log(result) 
-            res.status(201).send({ message: "Logs salvos com sucesso" })
+            return res.status(201).send({ message: "Logs salvos com sucesso" })
         })
         .catch(error => {
-            res.status(400).send({ message: error.message })
+            next(res.status(400).send({ message: error.message }))
         })
     } catch (error) {
-        res.status(400).send({ message: error.message })
+        next(res.status(400).send({ message: error.message }))
     }
 })
 
