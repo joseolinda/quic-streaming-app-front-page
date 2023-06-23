@@ -61,8 +61,13 @@ app.get("/video", function (req, res) {
 app.post("/register-log", async function (req, res) {
     const logs = req.body
     try {
-        await insertLogs(logs)
-        res.status(201).send({ message: "Logs salvos com sucesso" })
+        await insertLogs(logs).then(result => {
+            console.log(result) 
+            res.status(201).send({ message: "Logs salvos com sucesso" })
+        })
+        .catch(error => {
+            res.status(400).send({ message: error.message })
+        })
     } catch (error) {
         res.status(400).send({ message: error.message })
     }
