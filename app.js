@@ -8,17 +8,18 @@ const videoendpoint = process.env.VIDEO_URL || "/video?filme=1"
 
 const videos = require("./public/js/listVideos.json")
 const { Console } = require("console")
+const e = require("express")
 
 app.use("/public", express.static("public"))
-app.use(express.json());
+app.use(express.json())
 
 app.get("/", function (req, res) {
     res.sendFile(__dirname + "/index.html")
 })
 
 app.get("/video", function (req, res) {
-    const filme = req.query.filme || 1;
-    
+    const filme = req.query.filme || 1
+
     // Ensure there is a range given for the video
     let range = req.headers.range
     if (!range) {
@@ -27,7 +28,7 @@ app.get("/video", function (req, res) {
     }
 
     // get video stats (about 61MB)
-    const videoPath = __dirname + videos[filme-1].file;
+    const videoPath = __dirname + videos[filme - 1].file
     const videoSize = fs.statSync(videoPath).size
 
     // Parse Range
@@ -43,7 +44,7 @@ app.get("/video", function (req, res) {
         "Accept-Ranges": "bytes",
         "Content-Length": contentLength,
         "Content-Type": "video/mp4",
-        "x-film-name": videos[filme-1].name
+        "x-film-name": videos[filme - 1].name
     }
 
     // HTTP Status 206 for Partial Content
@@ -57,11 +58,14 @@ app.get("/video", function (req, res) {
 })
 
 // Persistir os logs no banco de dados
-
-app.post("/register-log", function (req, res) {
+app.post("/register-log", async function (req, res) {
     const logs = req.body
-    insertLogs(logs)
-    res.status(200).send({ message: "Log registrado com sucesso!" })
+    try {
+        await insertLogs(logs)
+        res.status(201).send({ message: "Logs salvos com sucesso" })
+    } catch (error) {
+        res.status(400).send({ message: error.message })
+    }
 })
 
 
