@@ -152,9 +152,12 @@ function updateStats(videoInfo) {
       // Mudar cor dos millisegundos
       lastByte.innerHTML = lastByte.innerHTML.replace(/:(\d{3})$/, "<i class='ms'>$&</i>")
       bufferingTime.innerHTML = bufferingTime.innerHTML.replace(/:(\d{3})$/, "<i class='ms'>$&</i>")
-      verPeformance()
     }
   })
+
+  videoPlayer.addEventListener("ended", function () {
+    verPeformance();
+  });
 
   videoPlayer.addEventListener("timeupdate", function () {
     const timePercent = Math.round((videoPlayer.currentTime / videoPlayer.duration) * 100)
