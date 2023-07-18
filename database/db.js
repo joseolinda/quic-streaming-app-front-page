@@ -1,5 +1,5 @@
 const sqlite3 = require("sqlite3").verbose()
-const filepath = "logs.sqlite3"
+const filepath = "database/logs.sqlite3"
 
 function createDbConnection() {
   const db = new sqlite3.Database(filepath, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (error) => {
