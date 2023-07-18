@@ -2,7 +2,7 @@ const mysql = require("mysql");
 const connectionConfig = {
   host: "localhost",
   user: "root",
-  password: "",
+  password: "password",
   database: "olindaweb",
 };
 
@@ -11,7 +11,7 @@ function createDbConnection() {
 
   db.connect((error) => {
     if (error) {
-      throw new Error("Error connecting to MySQL database: " + error.sql);
+      throw new Error("Error connecting to MySQL database: " + error);
     }
     createTable(db);
   });
